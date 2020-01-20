@@ -13,11 +13,20 @@ class App extends Component {
   }
 
   switchNameHandler = (newName) => {
-    //console.log("Was clicked");
     this.setState({ 
       persons: [
         { name: newName, age: 33 },
         { name: 'Candice', age: 32 },
+        { name: 'Abby', age: 5 }
+      ]
+    });
+  }
+
+  nameChangedHandler = (event) => {
+    this.setState({ 
+      persons: [
+        { name: 'Flo', age: 33 },
+        { name: event.target.value, age: 32 },
         { name: 'Abby', age: 5 }
       ]
     });
@@ -35,7 +44,8 @@ class App extends Component {
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          myClick={this.switchNameHandler.bind(this, "Flo!")}>
+          myClick={this.switchNameHandler.bind(this, "Flo!")}
+          changeName={this.nameChangedHandler}>
             I like Korean dramas!
         </Person>
         <Person 
