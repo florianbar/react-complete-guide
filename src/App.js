@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => {
-      return person.id == id;
+      return person.id === id;
     });
     
     const person = {
@@ -91,14 +91,16 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(" ")}>This is really working!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
-          Switch Name
-        </button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(" ")}>This is really working!</p>
+          <button style={style} onClick={this.togglePersonsHandler}>
+            Switch Name
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
