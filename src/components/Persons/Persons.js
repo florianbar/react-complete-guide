@@ -22,6 +22,7 @@ class Persons extends Component {
         return { message: "Snapshot!" };
     }
 
+    // Most used method. When fetching new data from server.
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log("[Persons.js] componentDidUpdate");
         console.log(snapshot);
