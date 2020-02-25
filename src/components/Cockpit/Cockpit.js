@@ -9,7 +9,17 @@ const cockpit = (props) => {
         setTimeout(() => {
             alert("Saved data to cloud!");
         }, 1000);
+        return () => {
+            console.log("[Cockpit.js] cleanup work in useEffect");
+        };
     }, []); // add empty array to only run useEffect once
+
+    useEffect(() => {
+        console.log("[Cockpit.js] 2nd useEffect");
+        return () => {
+            console.log("[Cockpit.js] cleanup work in 2nd useEffect");
+        };
+    });
 
     const assignedClasses = [];
     let btnClass = [classes.Button];
