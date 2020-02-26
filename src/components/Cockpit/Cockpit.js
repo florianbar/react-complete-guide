@@ -27,10 +27,10 @@ const cockpit = (props) => {
         btnClass.push(classes.Red);
     }
 
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
       assignedClasses.push(classes.red);
     }
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
       assignedClasses.push(classes.bold);
     }
 
@@ -41,10 +41,10 @@ const cockpit = (props) => {
             <button 
                 className={btnClass.join(" ")} 
                 onClick={props.clicked}>
-                Switch Name
+                Toggle Persons
             </button>
         </div>
     );
 };
 
-export default cockpit;
+export default React.memo(cockpit); // React.memo() used for functional components to only render if any props change
