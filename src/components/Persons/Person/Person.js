@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react';
-
-import Aux from '../../../hoc/Auxiliary'; 
 //import classes from './Person.css';
 
 class Person extends Component {
