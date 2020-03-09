@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import withClass from '../../../hoc/withClass';
 import classes from './Person.css';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
     constructor(props) {
@@ -18,20 +19,26 @@ class Person extends Component {
     render() {
         console.log("[Person.js] rendering...");
 
-        return <Fragment>
-            {this.props.isAuth ? <p>Authenticaed!</p> : <p>Please log in!</p>}
-            <p onClick={this.props.myClick}>
-                I'm {this.props.name} and I am {this.props.age} years old.
-            </p>
-            <p>{this.props.children}</p>
-            <input
-                //ref={(el) => {this.inputElement = el}}
-                ref={this.inputElementRef}
-                type="text" 
-                onChange={this.props.changeName} 
-                value={this.props.name} 
-            />
-        </Fragment>;
+        return (
+            <Fragment>
+                <AuthContext.Consumer>
+                    {(context) => 
+                        context.authenticated ? <p>Authenticated!</p> : <p>Please log in!</p>
+                    }
+                </AuthContext.Consumer>
+                <p onClick={this.props.myClick}>
+                    I'm {this.props.name} and I am {this.props.age} years old.
+                </p>
+                <p>{this.props.children}</p>
+                <input
+                    //ref={(el) => {this.inputElement = el}}
+                    ref={this.inputElementRef}
+                    type="text" 
+                    onChange={this.props.changeName} 
+                    value={this.props.name} 
+                />
+            </Fragment>
+        );
     }
 };
 
